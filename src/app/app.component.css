@@ -1,0 +1,13 @@
+.navv{
+    height: 8vh;
+    text-align: center;
+
+}
+a {
+    text-decoration: none;
+    background-color: rgb(44, 44, 44);
+    color: white;
+    font-size: large;
+    padding-top: 15px;
+
+}

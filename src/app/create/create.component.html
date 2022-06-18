@@ -1,0 +1,45 @@
+<form  [formGroup]="registrationForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">First Name</label>
+      <input #inputFirstName type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+      <div class="text-danger" *ngIf="registrationForm.controls['firstName'].errors">
+        <div *ngIf="registrationForm.controls['firstName'].errors['required']">Please enter first Name</div>
+    </div>  
+    </div>
+
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Last Name</label>
+      <input #inputLastName type="text" formControlName="lastName" placeholder="Last Name" class="form-control" id="exampleInputPassword1" >
+      <div class="text-danger" *ngIf="registrationForm.controls['lastName'].errors">
+        <div *ngIf="registrationForm.controls['lastName'].errors['required']"> Please enter last Name </div>
+    </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Age</label>
+      <input #inputAge type="text" formControlName="age" placeholder="Age"  class="form-control" id="exampleInputPassword1" >
+      <div *ngIf="registrationForm.controls['age'].errors" class="text-danger">
+        <div *ngIf="registrationForm.controls['age'].errors['required']">Please enter your age</div>
+        <div *ngIf="registrationForm.controls['age'].errors['pattern']">Only numbers are allowed</div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">National ID</label>
+      <input #inputNationalID type="text" formControlName="nationalID" placeholder="National ID"  class="form-control" id="exampleInputPassword1" >
+      <div class="text-danger" *ngIf="registrationForm.controls['nationalID'].errors && registrationForm.controls['nationalID'].touched">
+          <div *ngIf="registrationForm.controls['nationalID'].errors['required']">Please enter your national ID</div>
+          <div *ngIf="registrationForm.controls['nationalID'].errors['pattern']">Please enter a 14 digits national ID</div>
+      </div>
+    </div>
+
+    <br>
+    
+    <button style="margin: 2px; background-color: rgb(44, 44, 44);" type="button"
+    (click)="
+      addStudent(inputFirstName.value, inputLastName.value, +inputAge.value, inputNationalID.value)
+    " class="btn btn-primary" (click)="register()" [disabled]="registrationForm.invalid">Add Student </button>
+</form>
